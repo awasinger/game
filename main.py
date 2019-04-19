@@ -1,7 +1,6 @@
 import curses, os, json, ast, time, items
 from sys import argv
 from user import user
-from signal import pause
 
 def main(win):
 
@@ -29,15 +28,9 @@ def main(win):
 
 def processInput(key, win):
 
-    if key in ['KEY_UP', "KEY_DOWN", "KEY_LEFT", "KEY_RIGHT"]:
-        newPos = items.checkEmpty(key)
-        if newPos:
-            user.pos = newPos
+    if key in ['KEY_UP', "KEY_DOWN", "KEY_LEFT", "KEY_RIGHT", '<', '>']:
+        user.move(key)
 
-    elif key == '>':
-        user.pos = (user.pos[0], user.pos[1], user.pos[2] + 1)
-    elif key == '<':
-        user.pos = (user.pos[0], user.pos[1], user.pos[2] - 1)
     elif key == 'p':
         items.placeItem(win)
     elif key == 'd':

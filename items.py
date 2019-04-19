@@ -28,6 +28,19 @@ def checkEmpty(dir):
             return newItem
         else:
             return False
+    elif dir in ['u', '>']:
+        newItem = (user.pos[0], user.pos[1], user.pos[2] + 1)
+        if newItem not in mapItems:
+            return newItem
+        else:
+            return False
+    elif dir in ['d', '<']:
+        newItem = (user.pos[0], user.pos[1], user.pos[2] - 1)
+        if newItem not in mapItems:
+            return newItem
+        else:
+            return False
+
 
 def checkFull(dir):
     if dir == 'n':
